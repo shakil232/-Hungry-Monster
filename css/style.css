@@ -1,0 +1,23 @@
+
+#display-items{
+    padding-top: 30px;
+    display: grid;
+   grid-template-columns: repeat(4,1fr);  
+  
+}
+#display-items img{
+    width: 200px;   
+}
+.Items{
+    width: 200px;
+    margin: 10px;
+    padding: 5px;
+    text-align: center;  
+    border-radius: 10px; 
+}
+
+.meal-Name{
+    font-size: 13px;
+    width: 200px;
+    background-color: WhiteSmoke;
+}
