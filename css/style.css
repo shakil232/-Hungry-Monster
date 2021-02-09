@@ -1,32 +1,41 @@
-
-.search-input{
-    margin: 5px;
+ 
+ 
+ body{
+     background-color: LavenderBlush;
+ }
+ #display-ingredient{
+    text-align: center;
+ }
+#search-input{
+    font-size: 12px;
     padding: 3px;
-    font-size: 10px;
-   
+    border-radius: 5px;
 }
-.btn{
-    margin-left: 5px;
-}
-#display-items{
-    padding-top: 30px;
-    display: grid;
-   grid-template-columns: repeat(4,1fr);  
-  
-}
-#display-items img{
-    width: 200px;   
-}
-.Items{
-    width: 200px;
-    padding: 10px;
-    margin: 10px auto;
-    text-align: center;  
-    border-radius: 10px; 
-}
+#display-container{
+display: grid;
+grid-template-columns: repeat(4 ,1fr);
 
-.meal-Name{
-    font-size: 13px;
+}
+.meal-items{
+ margin: 0 auto;
+padding: 5px;
+}
+.meal-items img {
+ width: 200px;
+}
+.item-name{
     width: 200px;
-    background-color: WhiteSmoke;
+    text-align: center;
+    font-size: 12px;
+    background-color:#F8F7F5;
+    border-radius: 5px;
+    padding: 10px;
+    
+}
+#display-ingredient{
+    width: 400px;
+    margin: o auto;
+}
+.ingredient-img{
+    width: 200px;
 }

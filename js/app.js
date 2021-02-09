@@ -1,29 +1,53 @@
 
+// displayMeals
+const displayMeals = () => {
+    const searchText = document.getElementById('search-input').value;
+    const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchText}`
+    fetch(url)
+        .then(res => res.json())
+        .then(data => getDisplay(data.meals))
+}
 
+const getDisplay = meals => {
+    const displayContainer = document.getElementById('display-container');
+    displayContainer.innerHTML = ''
+    meals.forEach(items => {
+        // console.log(items);
+        const itemDiv = document.createElement('div');
+        itemDiv.className = `meal-items`
+        itemDiv.innerHTML = `
+       <img onclick=" displayIngredient(${items.idMeal})" src="${items.strMealThumb}">
+       <p class="item-name"> ${items.strMeal}</p>
+       
+       `
+        displayContainer.appendChild(itemDiv)
+    });
+}
 
-const searchButton = document.getElementById('search-button').addEventListener('click', getMealList);
+// displayIngredient
+const displayIngredient = (idMeal) => {
 
-function getMealList() {
-     const searchTextInput = document.getElementById('search-input').Value;
-     fetch('https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood')
-          .then(res => res.json())
-          .then(data => displayMealsItem(data.meals));
+    const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`
+    // console.log(url)
+    fetch(url)
+        .then(res => res.json())
+        .then(data => getDisplayIngredient(data.meals[0]))
+}
+const getDisplayIngredient = ingredient => {
+    const displayIngredient = document.getElementById('display-ingredient');
+    displayIngredient.innerHTML = ''
+    displayIngredient.innerHTML = `
+            <img class="ingredient-img" src="${ingredient.strMealThumb}">
+            <p> ${ingredient.strIngredient1}</p>
+            <p> ${ingredient.strIngredient2}</p>
+            <p> ${ingredient.strIngredient3}</p>
+            <p> ${ingredient.strIngredient4}</p>
+            <p> ${ingredient.strIngredient5}</p>
+            <p> ${ingredient.strIngredient6}</p>
+            <p> ${ingredient.strIngredient7}</p>
+            <p> ${ingredient.strIngredient8}</p>
+            <p> ${ingredient.strIngredient9}</p>
+            <p> ${ingredient.strIngredient10}</p>
 
-     const displayMealsItem = Meals => {
-
-          const MealsDiv = document.getElementById('display-items');
-          Meals.forEach(Items => {
-
-               const ItemsDiv = document.createElement('div');
-               ItemsDiv.className = `Items`
-               const ItemsList = `
-        <img class="meal-images" src="${Items.strMealThumb}">
-        <p class="meal-Name"> ${Items.strMeal}</p>
-        
-        `
-               ItemsDiv.innerHTML = ItemsList;
-               MealsDiv.appendChild(ItemsDiv)
-          });
-     }
-
+                 `
 }
